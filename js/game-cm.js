@@ -63,7 +63,7 @@ function clearStage() {
 
     // 20초 이하로는 빨라지지 않음
     if (stage <= 8) {
-        time = 60 - (stage * 5); // 남은 시간 초기화 (스테이지 진행 시 마다 5초씩 감소)
+        time = 25000 - (stage * 5); // 남은 시간 초기화 (스테이지 진행 시 마다 5초씩 감소)
     }
     stage++; // 스테이지 값 1 추가
     cardDeck = [];
