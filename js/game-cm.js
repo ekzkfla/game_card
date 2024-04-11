@@ -4,9 +4,10 @@ const CARD_IMG = ['bear', 'camel', 'cat', 'chick', 'chicken', 'cockroach', 'cow'
 const BOARD_SIZE = 24;
 
 let stage = 1; // 게임 스테이지
-let time = 60; // 남은 시간
+let time = 25000; // 남은 시간
 let timer = 0;
 let isFlip = false; // 카드 뒤집기 가능 여부
+
 
 let cardDeck = [];
 
@@ -27,6 +28,7 @@ function restartGame() {
     initGame();
     initScreen();
     startGame();
+    clearInterval(timer);
 }
 
 // 게임 종료
@@ -37,7 +39,7 @@ function stopGame() {
 // 게임 설정 초기화
 function initGame() {
     stage = 1;
-    time = 60;
+    time = 25000;
     isFlip = false;
     cardDeck = [];
 }
@@ -166,10 +168,10 @@ function showCardDeck() {
             }
         }, 200);
     });
-
+    //카드 보여지는 시간 
     showCardPromise.then(() => {
         // showCardPromise 성공인 경우 실행할 코드
-        setTimeout(hideCardDeck, 2000);
+        setTimeout(hideCardDeck, 5000);
     })
 }
 
@@ -360,6 +362,5 @@ const playerStage = document.getElementById("player-stage");
 window.onload = function() {
     playerTime.innerHTML = time;
     playerStage.innerHTML = stage;
-
     startGame();
 }
