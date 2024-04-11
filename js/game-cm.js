@@ -175,6 +175,29 @@ function showCardDeck() {
     })
 }
 
+//게임도중 카드전체 오픈(힌트) 함수
+function showCardDeckWait(){
+    let cnt = 0;
+    
+    let showCardPromise = new Promise((resolve, reject) => {
+        let showCardTimer = setInterval(() => {
+            cardBack[cnt].style.transform = "rotateY(180deg)";
+            cardFront[cnt++].style.transform = "rotateY(0deg)";
+
+            if (cnt === cardDeck.length) {
+                clearInterval(showCardTimer);
+
+                resolve();
+            }
+        }, 100);
+    });
+    //카드 보여지는 시간 
+    showCardPromise.then(() => {
+        // showCardPromise 성공인 경우 실행할 코드
+        setTimeout(hideCardDeck, 2000);
+    })
+}
+
 // 전체 카드 숨기는 함수
 function hideCardDeck() {
     for (let i = 0; i < cardDeck.length; i++) {
