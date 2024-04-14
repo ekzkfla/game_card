@@ -184,6 +184,11 @@ function showCardDeckWait(){
             if(cardFront[cnt].style.transform == "rotateY(0deg)"){
                cardBack[cnt].style.transform = "rotateY(0deg)";
                cardFront[cnt++].style.transform = "rotateY(-180deg)";  
+               if (cnt === cardDeck.length) {
+                clearInterval(showCardTimer);
+
+                resolve();
+               }
                return; 
                }
             cardBack[cnt].style.transform = "rotateY(180deg)";
