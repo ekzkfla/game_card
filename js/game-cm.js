@@ -1,6 +1,6 @@
 "use strict";
 
-const CARD_IMG = ['bear', 'camel', 'cat', 'chick', 'chicken', 'cockroach', 'cow', 'dolphin', 'elephant', 'fish', 'frog', 'horse', 'kitty', 'koala', 'monkey', 'penguin', 'pig', 'porcupine', 'puffer-fish', 'rabbit', 'rat-head', 'shell', 'snail', 'snake', 'squid', 'tiger', 'whale'];
+const CARD_IMG = ['baba', 'bana', 'coati', 'icecream', 'koko', 'lazy', 'leaves', 'millo', 'otter', 'raty', 'sandy', 'shark', 'sillky', 'sugarglider', 'sunny'];
 const BOARD_SIZE = 24;
 
 let stage = 1; // 게임 스테이지
@@ -92,12 +92,12 @@ function startTimer() {
 
 // 카드 덱 생성
 function makeCardDeck() {
-    // 이미지는 27개인데 필요한 카드는 12개로 고정되어 있기 때문에 27개의 이미지 중 랜덤으로 12개를 뽑도록 구현
+    // 이미지는 15개인데 필요한 카드는 12개로 고정되어 있기 때문에 15개의 이미지 중 랜덤으로 12개를 뽑도록 구현
     let randomNumberArr = [];
 
     for (let i = 0; i < BOARD_SIZE / 2; i++) {
         // 랜덤 값 뽑기
-        let randomNumber = getRandom(27, 0);
+        let randomNumber = getRandom(15, 0);
 
         // 중복 검사
         // cardDeckImgArr 안에 random 값이 없다면 cardDeckImgArr에 추가
@@ -181,6 +181,11 @@ function showCardDeckWait(){
     
     let showCardPromise = new Promise((resolve, reject) => {
         let showCardTimer = setInterval(() => {
+            if(cardFront[cnt].style.transform == "rotateY(0deg)"){
+               cardBack[cnt].style.transform = "rotateY(0deg)";
+               cardFront[cnt++].style.transform = "rotateY(-180deg)";  
+               return; 
+               }
             cardBack[cnt].style.transform = "rotateY(180deg)";
             cardFront[cnt++].style.transform = "rotateY(0deg)";
 
@@ -194,8 +199,31 @@ function showCardDeckWait(){
     //카드 보여지는 시간 
     showCardPromise.then(() => {
         // showCardPromise 성공인 경우 실행할 코드
-        setTimeout(hideCardDeck, 2000);
+        setTimeout(hideCardDeckWait, 2000);
     })
+}
+// 게임도중 카드전체 오픈후 숨기는 함수 
+function hideCardDeckWait() {
+
+    
+    for (let i = 0; i < cardDeck.length; i++) {
+        if(cardFront[i].style.transform == "rotateY(-180deg)"){
+           cardBack[i].style.transform = "rotateY(180deg)";
+           cardFront[i].style.transform = "rotateY(0deg)";
+           continue;
+        }
+        cardBack[i].style.transform = "rotateY(0deg)";
+        cardFront[i].style.transform = "rotateY(-180deg)";
+    }
+
+    // 전체 카드 숨기고 0.1초 뒤 isFlip = true, 게임 타이머 시작
+    // 바로 클릭이 가능하도록 할 때(isFlip = true 값을 바로 줬을 때) 에러가 나는 경우가 있어 0.1초 후 부터 카드 뒤집기가 가능하도록 설정
+    setTimeout(() => {
+        isFlip = true;
+
+        // 게임 타이머 시작
+        startTimer();
+    }, 100);
 }
 
 // 전체 카드 숨기는 함수
