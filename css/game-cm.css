@@ -142,7 +142,7 @@
 .card__back {
     transform: rotateY(0deg);
     background-image: url('../img/game-cm/pawprint.png');
-    background-size: 50% auto;
+    background-size: 100% auto;
 }
 
 .stage-clear {
