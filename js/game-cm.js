@@ -147,7 +147,7 @@ function settingCardDeck() {
                 <div class="card__front"></div>
             </div>
         `;
-
+        cardBack[i].style.backgroundImage = `url('img/game-cm/card-front/${[i+1]}.png')`;
         cardFront[i].style.backgroundImage = `url('img/game-cm/card-pack/${cardDeck[i].card}.png')`;
     }
 }
