@@ -61,9 +61,16 @@
     width: 45px;
 }
 
+.menu__nav-start {
+    justify-content: flex-end;
+    width: 45px;
+}
+
+
 .menu__nav-time::before,
 .menu__nav-wait--button,
-.menu__nav-home--button {
+.menu__nav-home--button,
+.menu__nav-start--button {
     content: '';
     display: block;
     width: 20px;
@@ -85,6 +92,10 @@
 
 .menu__nav-home--button {
     background-image: url('./../img/common/restart.png');
+}
+
+.menu__nav-start--button {
+    background-image: url('./../img/common/start.png');
 }
 
 .game {
@@ -235,13 +246,15 @@
 
     .menu__nav-time,
     .menu__nav-wait,
-    .menu__nav-home {
+    .menu__nav-home,
+    .menu__nav-start {
         width: 55px;
     }
 
     .menu__nav-time::before,
     .menu__nav-wait--button,
-    .menu__nav-home--button {
+    .menu__nav-home--button,
+    .menu__nav-start--button {
         width: 24px;
         height: 24px;
     }

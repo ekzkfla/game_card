@@ -20,7 +20,12 @@ function startGame() {
     settingCardDeck();
 
     // 최초 1회 전체 카드 보여줌
-    showCardDeck();
+    //showCardDeck();
+}
+
+function startKey(){
+     // 최초 1회 전체 카드 보여줌
+     showCardDeck();
 }
 
 // 게임 재시작
