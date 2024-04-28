@@ -10,7 +10,19 @@ let isFlip = false; // 카드 뒤집기 가능 여부
 
 
 let cardDeck = [];
-function soundStart(sounds){
+
+
+//bgm 사운드 
+function soundBgm(){
+    
+    var bgm = new Audio("Theme4_swing_shuffle.mp3");
+    bgm.volume =0.7;
+    bgm.play();
+    bgm.loop= true;
+}
+
+// 이펙트 사운드 
+function soundEffect(sounds){
     var audio = new Audio(sounds);
     audio.volume =0.5;
     audio.play();
@@ -23,14 +35,18 @@ function startGame() {
 
     // 카드 화면에 세팅
     settingCardDeck();
-  
+    
+    // bgm 사운드 재생
+    soundBgm();
+
     // 최초 1회 전체 카드 보여줌
     //showCardDeck();
 }
 
 function startKey(){
      // 최초 1회 전체 카드 보여줌
-     showCardDeck();
+     
+        showCardDeck();
 }
 
 // 게임 재시작
@@ -149,6 +165,7 @@ const cardBack = document.getElementsByClassName("card__back");
 const cardFront = document.getElementsByClassName("card__front");
 
 function settingCardDeck() {
+    
     for (let i = 0; i < BOARD_SIZE; i++) {
         gameBoard.innerHTML = gameBoard.innerHTML +
         `
@@ -164,6 +181,7 @@ function settingCardDeck() {
 
 // 전체 카드 보여주는 함수
 function showCardDeck() {
+     
     let cnt = 0;
     
     let showCardPromise = new Promise((resolve, reject) => {
@@ -278,9 +296,7 @@ function openCard(id) {
     // 화면에서 앞면으로 보이도록 스타일 조정
     cardBack[id].style.transform = "rotateY(180deg)";
     cardFront[id].style.transform = "rotateY(0deg)";
-    soundStart("sound/Tiny Button Push Sound.mp3");
-    //✔ SFX provided by 셀바이뮤직
-https://sellbuymusic.com/md/sloqnbb-dchnzcb
+    soundEffect("sound/Tiny Button Push Sound.mp3");
 
     // 선택한 카드의 open 여부를 true로 변경
     cardDeck[id].isOpen = true;
@@ -322,13 +338,13 @@ function checkCardMatch(indexArr) {
         // 카드 일치 처리
         firstCard.isMatch = true;
         secondCard.isMatch = true;
-        soundStart("sound/Glow 3.mp3");
+        soundEffect("sound/Glow 3.mp3");
         matchCard(indexArr);
     } else {
         // 카드 불일치 처리
         firstCard.isOpen = false;
         secondCard.isOpen = false;
-        soundStart("sound/Error 5.mp3");
+        soundEffect("sound/Error 5.mp3");
         closeCard(indexArr);
     }
 }
@@ -432,4 +448,5 @@ window.onload = function() {
     playerTime.innerHTML = time;
     playerStage.innerHTML = stage;
     startGame();
+    
 }

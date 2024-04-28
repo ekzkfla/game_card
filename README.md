@@ -5,6 +5,10 @@
 1. 기존 소스에 더하여 이미지, 사운드등 추가로 적용 
 
 
+주의!!
+bgm이  Chrom인 경우 정책으로  인한 bgm이 안나올수 있음 
+chrom => 설정 =>사이트 설정 => 콘텐츠 - 소리 - 소리 재생 허용됨  추가  =>  사이트 주소 입력(https://ekzkfla.github.io/game_card/game-cm.html)
+
 
 //copyRight 
  - sound
