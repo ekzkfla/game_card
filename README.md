@@ -1,6 +1,6 @@
 // 개발 노트 
 
-카드짝 맞추기 게임
+카드짝 맞추기 게임  https://ekzkfla.github.io/game_card/game-cm.html
 
 1. 기존 소스에 더하여 이미지, 사운드등 추가로 적용 
 
