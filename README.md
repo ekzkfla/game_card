@@ -6,6 +6,7 @@
 
 
 주의!!
+
 bgm이  Chrom인 경우 정책으로  인한 bgm이 안나올수 있음 
 chrom => 설정 =>사이트 설정 => 콘텐츠 - 소리 - 소리 재생 허용됨  추가  =>  사이트 주소 입력(https://ekzkfla.github.io/game_card/game-cm.html)
 

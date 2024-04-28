@@ -10,12 +10,12 @@ let isFlip = false; // 카드 뒤집기 가능 여부
 
 
 let cardDeck = [];
+let bgm = new Audio("Theme4_swing_shuffle.mp3");
 
 
 //bgm 사운드 
 function soundBgm(){
     
-    var bgm = new Audio("Theme4_swing_shuffle.mp3");
     bgm.volume =0.7;
     bgm.play();
     bgm.loop= true;
@@ -37,6 +37,7 @@ function startGame() {
     settingCardDeck();
     
     // bgm 사운드 재생
+    initBgm();
     soundBgm();
 
     // 최초 1회 전체 카드 보여줌
@@ -53,6 +54,7 @@ function startKey(){
 function restartGame() {
     initGame();
     initScreen();
+    initBgm();
     startGame();
     clearInterval(timer);
 }
@@ -68,6 +70,10 @@ function initGame() {
     time = 25000;
     isFlip = false;
     cardDeck = [];
+}
+function initBgm(){
+ bgm.pause;
+ 
 }
 
 // 게임 화면 초기화
@@ -100,6 +106,7 @@ function clearStage() {
     setTimeout(() => {
         stageClearImg.classList.remove("show");
         initScreen();
+        
         startGame();
     }, 2000);
 }
